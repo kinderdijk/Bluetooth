@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<hardware>
+	<script enable="true" />
+	<txpower power="9" bias="5" />
+	<timer_ticks speed="4" />
+	<timer index="1" enabled_channels="0x1f" divisor="0" mode="2" alternate="1" />
+	<!-- Configure the display on the BKBLE -->
+	<usart channel="0" mode="spi_master" alternate="2" polarity="positive" phase="1" endianness="msb" baud="57600" endpoint="none" />
+	<port index="0" tristatemask="0" pull="down" />
+    <port index="1" tristatemask="0" pull="down" />
+    <port index="2" tristatemask="0" pull="down" />
+	<pmux regulator_pin="7" />
+</hardware>

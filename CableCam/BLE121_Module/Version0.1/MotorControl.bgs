@@ -1,0 +1,275 @@
+#dim connected		# defines the connection status
+dim bdaddr(6)		# local bluetooth device address
+dim adv_data(13)
+dim sr_data(20)
+dim ascii(5)
+
+dim send_data(2)
+dim in_len
+dim result
+dim in(20)
+
+dim pwm_1
+dim pwm_2
+dim pwm_3
+dim pwm_4
+
+# Variables for finding the values to the motor speed.
+const slope = 16
+dim pwm
+
+# System boot event listener.
+event system_boot(major, minor, patch, build, ll_version, protocol_version, hw)
+	connected = 0	# start initially unconnected.
+	
+	# Disable watermark events so no uart data is sent before a connection.
+	# system_endpoint_uart1 is an enumeration for uart channel one.
+	call system_endpoint_set_watermarks(system_endpoint_uart1, $00, $00)
+	
+	# Get the name of the bluetooth device.
+	call system_address_get()(bdaddr(0:6))
+	
+    # -------------------------------
+    # build custom advertisement data
+    # -------------------------------
+    
+    # flags for discoverable/connectable
+    adv_data(0:1) = $02 # ad field length = 2 bytes
+    adv_data(1:1) = gap_ad_type_flags   # ad field type = 0x01 (Flags)
+    adv_data(2:1) = $06 # flags = 0x06, connectable/undirected
+
+    # tx power field advertisement, iOS apps may need this
+    adv_data(3:1) = $02 # ad field length = 2 bytes
+    adv_data(4:1) = gap_ad_type_txpower    # ad field type = 0x0A (TX Power)
+    adv_data(5:1) = $03 # TX power in dBm
+    # NOTE: TX power is a signed 8-bit value, and is not changed automatically
+    # when using "hardware_set_txpower(<power>)". This may be anywhere from -23
+    # to +3 based on your settings. Negative values may be converted to two's
+    # complement form by adding 256, so for example -23 dBm would be 233 or $E9.
+    
+    # custom manufacturer
+    adv_data(6:1) = $06 # ad field length = 5 bytes (arbitrary, maybe more or less but minimum 3)
+    adv_data(7:1) = $ff # ad field type = 0xFF (Manufacturer Specific Data)
+    adv_data(8:1) = $ff # unknown/prototype Company Identifier Code - octet 2 
+    adv_data(9:1) = $ff # unknown/prototype Company Identifier Code - octet 1 
+    adv_data(10:1) = $b1 # custom data byte #1 (can be anything)
+    adv_data(11:1) = $b2 # custom data byte #2 (can be anything)
+    adv_data(12:1) = $b3 # custom data byte #3 (can be anything)
+    # NOTE: manufacturer data fields should contain the Company Identifier Code
+    # in order to stay within BT 4.0 spec. You should also ideally obtain an
+    # an official Company Identifier Code, but 0xFFFF is suitable for development.
+    # (this is why the minimum ad field length for this is 3, so the CIC fits)
+
+    # More bytes are possible here, but not necessary for this demo.
+    # Compare with automatically generated ad packets from other
+    # demo projects to see what else you might put here, or read
+    # the relevant portions of the Bluetooth 4.0 Core Spec document
+    # for greater detail.
+    
+    # -------------------------------
+    # build custom scan response data
+    # -------------------------------
+	
+    # Create the device name to include the mac address of the bluetooth device.
+	sr_data(0:1) = $13  # ad field length = 19 bytes (0x13)
+    sr_data(1:1) = gap_ad_type_localname_complete   # ad field type = 0x09 (Complete local name)
+	sr_data(2:1) = $43  # 'C'
+    sr_data(3:1) = $61  # 'a'
+    sr_data(4:1) = $62  # 'b'
+    sr_data(5:1) = $6c  # 'l'
+    sr_data(6:1) = $65 # 'e'
+    sr_data(7:1) = $20 # ' '
+    sr_data(8:1) = $43 # 'C'
+    sr_data(9:1) = $61 # 'a'
+    sr_data(10:1) = $6d # 'm'
+	sr_data(11:1) = $20  # ' '
+    sr_data(12:1) = (bdaddr(3:1)/$10) + 48 + ((bdaddr(3:1)/$10)/10*7) 
+    sr_data(13:1) = (bdaddr(3:1)&$f)  + 48 + ((bdaddr(3:1)&$f )/10*7) 
+    sr_data(14:1) = (bdaddr(2:1)/$10) + 48 + ((bdaddr(2:1)/$10)/10*7) 
+    sr_data(15:1) = (bdaddr(2:1)&$f)  + 48 + ((bdaddr(2:1)&$f )/10*7) 
+    sr_data(16:1) = (bdaddr(1:1)/$10) + 48 + ((bdaddr(1:1)/$10)/10*7) 
+    sr_data(17:1) = (bdaddr(1:1)&$f)  + 48 + ((bdaddr(1:1)&$f )/10*7) 
+    sr_data(18:1) = (bdaddr(0:1)/$10) + 48 + ((bdaddr(0:1)/$10)/10*7) 
+    sr_data(19:1) = (bdaddr(0:1)&$f)  + 48 + ((bdaddr(0:1)&$f )/10*7) 
+	
+	# Write the device name to the gatt file.
+	call attributes_write(xgatt_device_name, 0, 18, sr_data(2:18))
+	
+	# Set the advertising parameters. 7 means using all 3 advertising channels. 0x07
+	call gap_set_adv_parameters(500, 1000, 7)
+	
+	# Set the custom advertising data.
+	call gap_set_adv_data(0, 13, adv_data(0:13))
+	
+	# Set the custom response data
+	call gap_set_adv_data(1,20, sr_data(0:20))
+	
+	# put module into discoverable/connectable mode (with user-defined advertisement data)
+    call gap_set_mode(gap_general_discoverable, gap_undirected_connectable)
+
+	# Channel 0 sets the frequency of the PWM. Timer_tick (hardware) is set to 
+	# 2 (8MHz), with a divisor of 128. 8MHz/128 = 62500Hz. With a comparator value
+	# of 125: 62500Hz/125 = 500Hz.
+	
+	# We might need to change this to 50Hz...
+	# call hardware_timer_comparator(1,0,6,40000)
+	
+	###############################################
+	########### 		Display        ############
+	###############################################
+	#set the display to command mode
+	# call hardware_io_port_write(0,$80,0)
+	# call hardware_io_port_config_direction(0,$80)
+	# #initialize the display
+	# call hardware_spi_transfer(0,11,"\x30\x30\x30\x39\x14\x56\x6d\x70\x0c\x06\x01")
+	# # Change display cursor pos
+	# call hardware_spi_transfer(0,1,"\x80")
+	# #set the display to data mode
+	# call hardware_io_port_write(0,$80,$80)
+	# #Write temperature to display
+	# call hardware_spi_transfer(0,16," DKBLE121-M256K ")
+	
+	# #set the display to command mode
+	# call hardware_io_port_write(0,$80,0)
+	# # Change display cursor pos
+	# call hardware_spi_transfer(0,1,"\xc0")
+	# #set the display to data mode
+	# call hardware_io_port_write(0,$80,$80)
+	# #Write temperature to display
+	# call hardware_spi_transfer(0,16,"PWM:            ")
+end
+
+# A connection must exist for an attribute to be written on a remote device,
+# and the attribute handle must be known. Once the device receives the message
+# and acknowledges it, it will send a result and generate an event.
+
+# This is produced when a local attribute value is changed by a remote device.
+# When the phone is in use and writes a value to the speed attribute, this event will be triggered
+# and it will need to change the value of the pwm duty cycle based on the value written.
+event attributes_value(connection, reason, handle, offset, value_len, value_data)
+	# Get the value into a form that is usable for PWM.
+	# the duty cycle at 500Hz frequency should go from 5-10% (3125-6250).
+	# pwm = pwm+1
+	pwm = slope*value_data(offset:value_len)+2000
+	# pwm = 500*value_data(offset:value_len)
+	
+	# Send the data over uart to the microcontroller.
+    if handle=cbl_cable_cam_speed then
+        send_data(0:1) = $02
+        send_data(1:1) = value_data(0:1)
+        call system_endpoint_tx(system_endpoint_uart1, $02, send_data(0:2))
+    end if
+    
+    # Send the gimbal measurements. This requires two bytes, one for each position.
+    if handle=cbl_gimbal_other then
+        send_data(0:1) = $01
+        send_data(1:2) = value_data(0:2)
+        call system_endpoint_tx(system_endpoint_uart1, $03, send_data(0:3))
+    end if
+    
+    if handle=cbl_gimbal_roll then
+        send_data(0:1) = $03
+        send_data(1:1) = value_data(0:1)
+        call system_endpoint_tx(system_endpoint_uart1, $02, send_data(0:2))
+    end if
+	
+    # Change the name of the device. This needs to be stored in persistant memory.
+    # The result of the attempt to save is 0 if successful.
+    if handle=custom_device_name then
+        call attributes_write(xgatt_device_name, 0, 18, sr_data(2:18))
+        call flash_ps_save($8000, value_len, value_data(0:value_len))
+    end if
+	
+	# pwm_1 = pwm/1000
+	# pwm_2 = pwm/100 +(pwm_1*-10)
+	# pwm_3 = pwm/10 + (pwm_1*-100) + (pwm_2*-10)
+	# pwm_4 = pwm + (pwm_1*-1000) + (pwm_2*-100) + (pwm_3*-10)
+	
+	# ascii(0:1) = pwm_1+48
+	# ascii(1:1) = pwm_2+48
+	# ascii(2:1) = pwm_3+48
+	# ascii(3:1) = pwm_4+48
+	# ascii(4:1) = 46
+	
+	# #set the display to command mode
+	# call hardware_io_port_write(0,$80,0)
+	# # Change display cursor pos
+	# call hardware_spi_transfer(0,1,"\xc6")
+	# #set the display to data mode
+	# call hardware_io_port_write(0,$80, $80)
+	# #Write temperature to display
+	# call hardware_spi_transfer(0,5,ascii(0:5))
+	# #pull pin down to save power
+	# call hardware_io_port_write(0,$80,0)
+	
+	# call hardware_timer_comparator(1,4,6,pwm)
+	
+	# call attributes_user_write_response(handle, $0)
+end
+
+event system_endpoint_watermark_rx(endpoint, size)
+    if endpoint = system_endpoint_uart1 then
+        in_len = size
+        if in_len > 20 then
+            in_len = 20
+        end if
+
+        # disable rx watermark
+        call system_endpoint_set_watermarks(system_endpoint_uart1, 0, $ff)
+
+        # read from UART
+        call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len))
+        
+        # send over BLE
+        if in(0:1) = $04 then
+            call attributes_write(cbl_battery_data, 0, $01, in(1:1))
+        end if
+        # call attributes_write(xgatt_rx, 0, in_len, in(0:in_len))
+
+        # set rx watermark, and leave tx watermark unchanged.
+        call system_endpoint_set_watermarks(system_endpoint_uart1, $02, $ff)
+
+    end if
+end
+
+event connection_status(connection, flags, address, address_type, conn_interval, timeout, latency, bonding)
+	if connected = 0 then
+		#clear the UART buffer
+		#reading from it 10 times seem to do the trick
+		in_len = 1
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+		call system_endpoint_rx(system_endpoint_uart1, in_len)(result, in_len, in(0:in_len)) #read from UART
+	
+		#enable the watermarks for RX here
+		call system_endpoint_set_watermarks(system_endpoint_uart1, $02, $ff) # set RX watermark
+
+	end if
+	connected = 1	
+end
+
+event connection_disconnected(connection, reason)
+	# Put some logic in here about closing the connection.
+	connected = 0
+
+	# Send a disconnect message to the micro controller.
+	send_data(0:1) = $ff
+        call system_endpoint_tx(system_endpoint_uart1, $01, send_data(0:1))
+	
+	# Disable watermark events again.
+	call system_endpoint_set_watermarks(system_endpoint_uart1, $00, $00)
+	
+	# Start advertising again
+	call gap_set_mode(gap_general_discoverable, gap_undirected_connectable)
+	
+	# If the connection is lost set the pwm so the motor won't move again.
+	# call hardware_timer_comparator(1,4,6,4000)
+	# perhaps include some braking feature to prevent damage of an out-of-control camera.
+end

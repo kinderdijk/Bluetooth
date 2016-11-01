@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+	<service uuid="1800" advertise="true">
+		<description>Generic Access Profile</description>
+		
+		<!-- Device Name -->
+		<characteristic uuid="2A00" id="xgatt_device_name">
+			<description>Device Name</description>
+			<properties read="true" />
+			<value length="18" />
+		</characteristic>
+		
+		<characteristic uuid="2A01" id="c_appearance">
+			<description>Appearance</description>
+			<properties read="true" const="true" />
+			<value type="hex">0100</value>
+		</characteristic>
+	</service>
+	
+	<service uuid="180A">
+		<description>Device Information</description>
+		
+		<!-- Manufacturer Name -->
+		<characteristic uuid="2a29">
+			<properties read="true" const="true" />
+			<value>Capture Beyond Limits</value>
+			<description>Manufacturer Name String</description>
+		</characteristic>
+		
+		<!-- Model number of the project -->
+		<characteristic uuid="2a24">
+			<properties read="true" const="true" />
+			<value>Cable Cam V0.1</value>
+			<description>Model Number String</description>
+		</characteristic>
+		
+		<!-- Version of the software on the chip -->
+		<characteristic uuid="2a26">
+			<properties read="true" const="true" />
+			<value>0.0.2</value>
+			<description>Firmware Revision String</description>
+		</characteristic>
+		
+		<!-- Revision number of the hardware -->
+		<characteristic uuid="2a27">
+			<properties read="true" const="true" />
+			<value>0.0.2</value>
+			<description>Hardware Revision String</description>
+		</characteristic>
+	</service>
+
+	<!-- These are unique identifiers. -->
+	<service uuid="1e3033af-3edd-425b-98ff-5edc884ad57e" advertise="true">
+		<description>Capture Beyond Limits Services</description>
+
+        <characteristic uuid="64890478-5dd0-480b-98b1-ef21c66f87f7" id="custom_device_name">
+            <description>CUSTOM NAME</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value type="utf-8" variable_length="true" length="20" />
+        </characteristic>
+        
+        <characteristic uuid="71744276-c58b-46cc-933d-33ba136bdbfc" id="cbl_cable_cam_speed">
+            <description>MOTOR_SPEED</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value variable_length="true" length="8" />
+        </characteristic>
+
+        <characteristic uuid="61eb902b-4e0c-42ac-aa60-443f0c1ecd7a" id="cbl_gimbal_other">
+            <description>GIMBAL OTHER</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value variable_length="true" length="16" />
+        </characteristic>
+
+        <characteristic uuid="f20bd80b-730b-4b81-837b-cea6c26c6ef0" id="cbl_gimbal_roll">
+            <description>GIMBAL ROLL</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value variable_length="true" length="8" />
+        </characteristic>
+
+        <characteristic uuid="0f9437de-dff4-4035-a596-339d4dbe3f8b" id="cbl_battery_data">
+            <description>BATTERY</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value variable_length="true" length="8" />
+        </characteristic>
+
+        <characteristic uuid="f36cff8b-65ae-43ba-ad71-a7905f9fb2c6" id="cbl_position">
+            <description>POSITION</description>
+            <properties write="true" read="true" write_no_response="true" />
+            <value variable_length="true" length="16" />
+        </characteristic>
+
+    </service>
+	
+</configuration>

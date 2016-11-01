@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<hardware>
+    <script enable="true" />
+    <sleep enable="false" />
+	<usb enable="false" />
+    <txpower power="9" bias="5" />
+    <!-- UART configuration for communication with the microcontroller. -->
+    <usart channel="1" mode="uart" alternate="1" baud="9600" endpoint="none" endianness="lsb" flow="false" />s
+</hardware>

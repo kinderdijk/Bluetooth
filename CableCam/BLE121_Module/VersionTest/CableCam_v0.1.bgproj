@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project>
+	<gatt in="gatt.xml" />
+	<hardware in="hardware.xml" />
+	<device type="ble121lr-m256k" />
+	<script in="MotorControl.bgs" />
+	<image out="CableCam_v0.1.hex" />
+</project>

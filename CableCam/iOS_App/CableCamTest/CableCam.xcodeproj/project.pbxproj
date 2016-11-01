@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E2E60251AE90290007DD682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E60241AE90290007DD682 /* AppDelegate.swift */; };
+		3E2E60271AE90290007DD682 /* SpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E60261AE90290007DD682 /* SpeedViewController.swift */; };
+		3E2E602A1AE90290007DD682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E60281AE90290007DD682 /* Main.storyboard */; };
+		3E2E602C1AE90290007DD682 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E602B1AE90290007DD682 /* Images.xcassets */; };
+		3E2E602F1AE90290007DD682 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E602D1AE90290007DD682 /* LaunchScreen.xib */; };
+		3E2E603B1AE90291007DD682 /* CableCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E603A1AE90291007DD682 /* CableCamTests.swift */; };
+		3E5BE9901B2CB2DA00539E18 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BE98F1B2CB2DA00539E18 /* SettingViewController.swift */; };
+		3E5BE9931B2CDB7B00539E18 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BE9921B2CDB7B00539E18 /* AnalogStick.swift */; };
+		3E5BE9961B2CDC7600539E18 /* aSBgImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5BE9941B2CDC7600539E18 /* aSBgImg.png */; };
+		3E5BE9971B2CDC7600539E18 /* aSThumbImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5BE9951B2CDC7600539E18 /* aSThumbImg.png */; };
+		3E5BE9991B2CE39500539E18 /* StickScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BE9981B2CE39500539E18 /* StickScene.swift */; };
+		3E988D021B28448F00FA5997 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E988D011B28448F00FA5997 /* TableViewController.swift */; };
+		3EC172871AEC9133001A250C /* BluetoothDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC172861AEC9133001A250C /* BluetoothDiscover.swift */; };
+		3EC1728B1AECF34B001A250C /* BluetoothServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1728A1AECF34B001A250C /* BluetoothServices.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3E2E60351AE90291007DD682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E2E60171AE90290007DD682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E2E601E1AE90290007DD682;
+			remoteInfo = CableCam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3E2E601F1AE90290007DD682 /* CableCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CableCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E2E60231AE90290007DD682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E2E60241AE90290007DD682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E2E60261AE90290007DD682 /* SpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedViewController.swift; sourceTree = "<group>"; };
+		3E2E60291AE90290007DD682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E2E602B1AE90290007DD682 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E2E602E1AE90290007DD682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E2E60341AE90291007DD682 /* CableCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CableCamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E2E60391AE90291007DD682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E2E603A1AE90291007DD682 /* CableCamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCamTests.swift; sourceTree = "<group>"; };
+		3E5BE98F1B2CB2DA00539E18 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3E5BE9921B2CDB7B00539E18 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
+		3E5BE9941B2CDC7600539E18 /* aSBgImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSBgImg.png; sourceTree = "<group>"; };
+		3E5BE9951B2CDC7600539E18 /* aSThumbImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSThumbImg.png; sourceTree = "<group>"; };
+		3E5BE9981B2CE39500539E18 /* StickScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickScene.swift; sourceTree = "<group>"; };
+		3E988D011B28448F00FA5997 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3EC172861AEC9133001A250C /* BluetoothDiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDiscover.swift; sourceTree = "<group>"; };
+		3EC1728A1AECF34B001A250C /* BluetoothServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothServices.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E2E601C1AE90290007DD682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E2E60311AE90291007DD682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E2E60161AE90290007DD682 = {
+			isa = PBXGroup;
+			children = (
+				3E2E60211AE90290007DD682 /* CableCam */,
+				3E2E60371AE90291007DD682 /* CableCamTests */,
+				3E2E60201AE90290007DD682 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E2E60201AE90290007DD682 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E601F1AE90290007DD682 /* CableCam.app */,
+				3E2E60341AE90291007DD682 /* CableCamTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E2E60211AE90290007DD682 /* CableCam */ = {
+			isa = PBXGroup;
+			children = (
+				3E5BE9911B2CDB6800539E18 /* Analog Stick */,
+				3E988D011B28448F00FA5997 /* TableViewController.swift */,
+				3E2E60241AE90290007DD682 /* AppDelegate.swift */,
+				3E2E60261AE90290007DD682 /* SpeedViewController.swift */,
+				3E5BE98F1B2CB2DA00539E18 /* SettingViewController.swift */,
+				3EC172861AEC9133001A250C /* BluetoothDiscover.swift */,
+				3EC1728A1AECF34B001A250C /* BluetoothServices.swift */,
+				3E2E60281AE90290007DD682 /* Main.storyboard */,
+				3E2E602B1AE90290007DD682 /* Images.xcassets */,
+				3E2E602D1AE90290007DD682 /* LaunchScreen.xib */,
+				3E2E60221AE90290007DD682 /* Supporting Files */,
+			);
+			path = CableCam;
+			sourceTree = "<group>";
+		};
+		3E2E60221AE90290007DD682 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E60231AE90290007DD682 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E2E60371AE90291007DD682 /* CableCamTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E603A1AE90291007DD682 /* CableCamTests.swift */,
+				3E2E60381AE90291007DD682 /* Supporting Files */,
+			);
+			path = CableCamTests;
+			sourceTree = "<group>";
+		};
+		3E2E60381AE90291007DD682 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E60391AE90291007DD682 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E5BE9911B2CDB6800539E18 /* Analog Stick */ = {
+			isa = PBXGroup;
+			children = (
+				3E5BE9941B2CDC7600539E18 /* aSBgImg.png */,
+				3E5BE9951B2CDC7600539E18 /* aSThumbImg.png */,
+				3E5BE9921B2CDB7B00539E18 /* AnalogStick.swift */,
+				3E5BE9981B2CE39500539E18 /* StickScene.swift */,
+			);
+			name = "Analog Stick";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E2E601E1AE90290007DD682 /* CableCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E2E603E1AE90291007DD682 /* Build configuration list for PBXNativeTarget "CableCam" */;
+			buildPhases = (
+				3E2E601B1AE90290007DD682 /* Sources */,
+				3E2E601C1AE90290007DD682 /* Frameworks */,
+				3E2E601D1AE90290007DD682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CableCam;
+			productName = CableCam;
+			productReference = 3E2E601F1AE90290007DD682 /* CableCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3E2E60331AE90291007DD682 /* CableCamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E2E60411AE90291007DD682 /* Build configuration list for PBXNativeTarget "CableCamTests" */;
+			buildPhases = (
+				3E2E60301AE90291007DD682 /* Sources */,
+				3E2E60311AE90291007DD682 /* Frameworks */,
+				3E2E60321AE90291007DD682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E2E60361AE90291007DD682 /* PBXTargetDependency */,
+			);
+			name = CableCamTests;
+			productName = CableCamTests;
+			productReference = 3E2E60341AE90291007DD682 /* CableCamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E2E60171AE90290007DD682 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = CaptureBeyondLimits;
+				TargetAttributes = {
+					3E2E601E1AE90290007DD682 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = VDC3V9U8Y8;
+					};
+					3E2E60331AE90291007DD682 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 3E2E601E1AE90290007DD682;
+					};
+				};
+			};
+			buildConfigurationList = 3E2E601A1AE90290007DD682 /* Build configuration list for PBXProject "CableCam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E2E60161AE90290007DD682;
+			productRefGroup = 3E2E60201AE90290007DD682 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E2E601E1AE90290007DD682 /* CableCam */,
+				3E2E60331AE90291007DD682 /* CableCamTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E2E601D1AE90290007DD682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5BE9961B2CDC7600539E18 /* aSBgImg.png in Resources */,
+				3E2E602A1AE90290007DD682 /* Main.storyboard in Resources */,
+				3E2E602F1AE90290007DD682 /* LaunchScreen.xib in Resources */,
+				3E2E602C1AE90290007DD682 /* Images.xcassets in Resources */,
+				3E5BE9971B2CDC7600539E18 /* aSThumbImg.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E2E60321AE90291007DD682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E2E601B1AE90290007DD682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EC1728B1AECF34B001A250C /* BluetoothServices.swift in Sources */,
+				3EC172871AEC9133001A250C /* BluetoothDiscover.swift in Sources */,
+				3E5BE9931B2CDB7B00539E18 /* AnalogStick.swift in Sources */,
+				3E2E60271AE90290007DD682 /* SpeedViewController.swift in Sources */,
+				3E988D021B28448F00FA5997 /* TableViewController.swift in Sources */,
+				3E2E60251AE90290007DD682 /* AppDelegate.swift in Sources */,
+				3E5BE9901B2CB2DA00539E18 /* SettingViewController.swift in Sources */,
+				3E5BE9991B2CE39500539E18 /* StickScene.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E2E60301AE90291007DD682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E2E603B1AE90291007DD682 /* CableCamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3E2E60361AE90291007DD682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E2E601E1AE90290007DD682 /* CableCam */;
+			targetProxy = 3E2E60351AE90291007DD682 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3E2E60281AE90290007DD682 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E2E60291AE90290007DD682 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E2E602D1AE90290007DD682 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E2E602E1AE90290007DD682 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E2E603C1AE90291007DD682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3E2E603D1AE90291007DD682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E2E603F1AE90291007DD682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CableCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		3E2E60401AE90291007DD682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CableCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		3E2E60421AE90291007DD682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CableCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CableCam.app/CableCam";
+			};
+			name = Debug;
+		};
+		3E2E60431AE90291007DD682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CableCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CableCam.app/CableCam";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E2E601A1AE90290007DD682 /* Build configuration list for PBXProject "CableCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E2E603C1AE90291007DD682 /* Debug */,
+				3E2E603D1AE90291007DD682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E2E603E1AE90291007DD682 /* Build configuration list for PBXNativeTarget "CableCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E2E603F1AE90291007DD682 /* Debug */,
+				3E2E60401AE90291007DD682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E2E60411AE90291007DD682 /* Build configuration list for PBXNativeTarget "CableCamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E2E60421AE90291007DD682 /* Debug */,
+				3E2E60431AE90291007DD682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E2E60171AE90290007DD682 /* Project object */;
+}

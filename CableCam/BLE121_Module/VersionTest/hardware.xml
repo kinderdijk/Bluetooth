@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<hardware>
+    <script enable="true" />
+    <sleep enable="false" />
+    <usb enable="false" />
+    <txpower power="9" bias="5" />
+
+    <timer_ticks speed="4" />  <!-- set the system clock to 2MHz)
+    <timer index="1" enabled_channels="0x1f" divisor="0" mode="2" alternate="1" />
+
+    <port index="0" pull="down />
+    <port index="1" pull="down />
+    <port index="2" pull="down />
+</hardware>

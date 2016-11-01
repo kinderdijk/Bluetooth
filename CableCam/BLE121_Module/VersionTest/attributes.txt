@@ -1,0 +1,8 @@
+xgatt_device_name 3
+c_appearance 6
+custom_device_name 23
+cbl_cable_cam_speed 26
+cbl_gimbal_other 29
+cbl_gimbal_roll 32
+cbl_battery_data 35
+cbl_position 38
